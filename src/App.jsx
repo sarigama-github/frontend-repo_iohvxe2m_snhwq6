@@ -1,71 +1,67 @@
+import React, { useState } from 'react'
+import Hero from './components/Hero'
+import About from './components/About'
+import Skills from './components/Skills'
+import Projects from './components/Projects'
+import Templates from './components/Templates'
+import Contact from './components/Contact'
+import VariantSwitcher from './components/VariantSwitcher'
+import StyleVariants from './components/StyleVariants'
+
 function App() {
+  const [variant, setVariant] = useState('technical')
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"></div>
-
-      <div className="relative min-h-screen flex items-center justify-center p-8">
-        <div className="max-w-2xl w-full">
-          {/* Header with Flames icon */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center mb-6">
-              <img
-                src="/flame-icon.svg"
-                alt="Flames"
-                className="w-24 h-24 drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
-              />
-            </div>
-
-            <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-              Flames Blue
-            </h1>
-
-            <p className="text-xl text-blue-200 mb-6">
-              Build applications through conversation
-            </p>
-          </div>
-
-          {/* Instructions */}
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 shadow-xl mb-6">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                1
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Describe your idea</h3>
-                <p className="text-blue-200/80 text-sm">Use the chat panel on the left to tell the AI what you want to build</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                2
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Watch it build</h3>
-                <p className="text-blue-200/80 text-sm">Your app will appear in this preview as the AI generates the code</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                3
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Refine and iterate</h3>
-                <p className="text-blue-200/80 text-sm">Continue the conversation to add features and make changes</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="text-center">
-            <p className="text-sm text-blue-300/60">
-              No coding required • Just describe what you want
-            </p>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-blue-100">
+      {/* Top gradient and subtle grid */}
+      <div className="pointer-events-none fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom_right,rgba(59,130,246,0.06),transparent_30%)]" />
+        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: `radial-gradient(circle at 1px 1px, rgba(148,163,184,0.25) 1px, transparent 0)`, backgroundSize: '24px 24px' }} />
       </div>
+
+      {/* Header */}
+      <header className="sticky top-0 z-20 backdrop-blur supports-[backdrop-filter]:bg-slate-900/60 border-b border-slate-800">
+        <div className="mx-auto max-w-5xl px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 shadow ring-1 ring-blue-300/30" />
+            <span className="text-white font-medium">O. A. Ogundipe</span>
+          </div>
+          <nav className="hidden sm:flex items-center gap-6 text-sm">
+            <a href="#about" className="text-blue-100/80 hover:text-white">About</a>
+            <a href="#skills" className="text-blue-100/80 hover:text-white">Skills</a>
+            <a href="#projects" className="text-blue-100/80 hover:text-white">Projects</a>
+            <a href="#contact" className="text-blue-100/80 hover:text-white">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <Hero />
+
+      {/* Variant switcher and explanation */}
+      <section className="mx-auto max-w-5xl px-6 py-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <h2 className="text-white font-semibold">Style Variants</h2>
+          <VariantSwitcher variant={variant} onChange={setVariant} />
+        </div>
+        <div className="mt-4">
+          <StyleVariants variant={variant} />
+        </div>
+      </section>
+
+      {/* Content sections */}
+      <About />
+      <Skills />
+      <Projects />
+      <Templates />
+      <Contact />
+
+      {/* Footer */}
+      <footer className="border-t border-slate-800 mt-10">
+        <div className="mx-auto max-w-5xl px-6 py-10 text-sm text-blue-300/60">
+          Built for showcasing engineering work with multiple tone options. If you want, I can produce the full written text for all three styles.
+        </div>
+      </footer>
     </div>
   )
 }
